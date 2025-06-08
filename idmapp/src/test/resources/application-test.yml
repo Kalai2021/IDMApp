@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sairam
+    username: sairam
+    password: sairam123
+    driver-class-name: org.postgresql.Driver
+
+auth0:
+  domain: test-tenant.auth0.com
+  audience: https://test-api.your-domain.com
+  client-id: test-client-id
+  client-secret: test-client-secret
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.example.idmapp: DEBUG 

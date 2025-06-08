@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/idmapp
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+jwt:
+  secret: your-256-bit-secret-key-here-make-it-long-and-secure
+  expiration: 86400000  # 24 hours in milliseconds
+
+logging:
+  level:
+    com.example.usermanagement: DEBUG
+
+server:
+  port: 8081
+
+auth0:
+  domain: dev-df4lud4n6zz4i5tg.us.auth0.com
+  client-id: nkMspWucfXetzOpiBXi5sunnmRQNP5QZ
+  client-secret: CxsP1j4OL_V3FtK0YyJbEa2qYRF2gSV07WPQzUtPVE-VMYEcmGNKQnFTA5eWs3cx
+  audience: /api/v1/

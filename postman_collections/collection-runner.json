@@ -1,0 +1,25 @@
+{
+  "info": {
+    "name": "Auth0 Tests Runner",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth0 Tests",
+      "item": [
+        {
+          "name": "Get Auth0 Token"
+        },
+        {
+          "name": "Test Public Endpoint"
+        },
+        {
+          "name": "Test Protected Endpoint Without Token"
+        },
+        {
+          "name": "Test Protected Endpoint With Token"
+        }
+      ]
+    }
+  ]
+} 

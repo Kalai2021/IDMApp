@@ -1,0 +1,76 @@
+{
+  "info": {
+    "name": "Role Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Role",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/roles",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "roles"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Test Role\",\n    \"description\": \"A test role\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Role",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/roles/{{roleId}}",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "roles", "{{roleId}}"]
+        }
+      }
+    },
+    {
+      "name": "Update Role",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/roles/{{roleId}}",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "roles", "{{roleId}}"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Updated Role\",\n    \"description\": \"An updated test role\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete Role",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/roles/{{roleId}}",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "roles", "{{roleId}}"]
+        }
+      }
+    }
+  ]
+} 

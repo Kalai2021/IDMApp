@@ -1,0 +1,140 @@
+{
+  "info": {
+    "name": "Organization Member Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add User to Organization",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/orgmembers",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "orgmembers"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"op\": 1,\n    \"type\": \"USER\",\n    \"orgId\": \"{{orgId}}\",\n    \"entityId\": \"{{userId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Add Group to Organization",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/orgmembers",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "orgmembers"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"op\": 1,\n    \"type\": \"GROUP\",\n    \"orgId\": \"{{orgId}}\",\n    \"entityId\": \"{{groupId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Add Role to Organization",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/orgmembers",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "orgmembers"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"op\": 1,\n    \"type\": \"ROLE\",\n    \"orgId\": \"{{orgId}}\",\n    \"entityId\": \"{{roleId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Remove User from Organization",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/orgmembers",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "orgmembers"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"op\": 2,\n    \"type\": \"USER\",\n    \"orgId\": \"{{orgId}}\",\n    \"entityId\": \"{{userId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Remove Group from Organization",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/orgmembers",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "orgmembers"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"op\": 2,\n    \"type\": \"GROUP\",\n    \"orgId\": \"{{orgId}}\",\n    \"entityId\": \"{{groupId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Remove Role from Organization",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/orgmembers",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "orgmembers"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"op\": 2,\n    \"type\": \"ROLE\",\n    \"orgId\": \"{{orgId}}\",\n    \"entityId\": \"{{roleId}}\"\n}"
+        }
+      }
+    }
+  ]
+} 

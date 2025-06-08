@@ -1,0 +1,194 @@
+{
+  "info": {
+    "name": "Auth0 Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Auth0 Token",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "pm.request.headers.add({",
+              "    key: 'Accept',",
+              "    value: 'application/json'",
+              "});",
+              "pm.request.headers.add({",
+              "    key: 'User-Agent',",
+              "    value: 'PostmanRuntime'",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = pm.response.json();",
+              "if (jsonData.access_token) {",
+              "    pm.environment.set('access_token', jsonData.access_token);",
+              "    console.log('Token saved to environment');",
+              "} else {",
+              "    console.error('No access token in response');",
+              "    console.error('Response:', pm.response.text());",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://{{auth0_domain}}/oauth/token",
+          "host": ["{{auth0_domain}}"],
+          "path": ["oauth", "token"],
+          "protocol": "https"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"{{auth0_client_id}}\",\n    \"client_secret\": \"{{auth0_client_secret}}\",\n    \"audience\": \"{{auth0_audience}}\",\n    \"grant_type\": \"client_credentials\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Test Public Endpoint",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response has expected structure', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('message');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/test/public",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "test", "public"]
+        }
+      }
+    },
+    {
+      "name": "Test Protected Endpoint Without Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 401', function () {",
+              "    pm.response.to.have.status(401);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/v1/test/protected",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "test", "protected"]
+        }
+      }
+    },
+    {
+      "name": "Test Protected Endpoint With Token",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "if (!pm.environment.get('access_token')) {",
+              "    console.log('No token found, getting new token...');",
+              "    pm.sendRequest({",
+              "        url: 'https://' + pm.environment.get('auth0_domain') + '/oauth/token',",
+              "        method: 'POST',",
+              "        header: {",
+              "            'Content-Type': 'application/json',",
+              "            'Accept': 'application/json',",
+              "            'User-Agent': 'PostmanRuntime'",
+              "        },",
+              "        body: {",
+              "            mode: 'raw',",
+              "            raw: JSON.stringify({",
+              "                client_id: pm.environment.get('auth0_client_id'),",
+              "                client_secret: pm.environment.get('auth0_client_secret'),",
+              "                audience: pm.environment.get('auth0_audience'),",
+              "                grant_type: 'client_credentials'",
+              "            })",
+              "        }",
+              "    }, function (err, res) {",
+              "        if (err) {",
+              "            console.error(err);",
+              "        } else {",
+              "            var jsonData = res.json();",
+              "            if (jsonData.access_token) {",
+              "                pm.environment.set('access_token', jsonData.access_token);",
+              "                console.log('Token saved to environment');",
+              "            } else {",
+              "                console.error('No access token in response');",
+              "                console.error('Response:', res.text());",
+              "            }",
+              "        }",
+              "    });",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response has expected structure', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('message');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/v1/test/protected",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "test", "protected"]
+        }
+      }
+    }
+  ]
+} 

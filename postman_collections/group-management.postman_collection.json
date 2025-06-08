@@ -1,0 +1,76 @@
+{
+  "info": {
+    "name": "Group Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Group",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/groups",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "groups"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Test Group\",\n    \"description\": \"A test group\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Group",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/groups/{{groupId}}",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "groups", "{{groupId}}"]
+        }
+      }
+    },
+    {
+      "name": "Update Group",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/groups/{{groupId}}",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "groups", "{{groupId}}"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Updated Group\",\n    \"description\": \"An updated test group\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete Group",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/groups/{{groupId}}",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "groups", "{{groupId}}"]
+        }
+      }
+    }
+  ]
+} 

@@ -1,0 +1,36 @@
+model
+  schema 1.1
+
+type user
+type group
+type role
+type org
+
+define can_manage: [user]
+define can_view: [user]
+define can_edit: [user]
+define can_delete: [user]
+
+# User management
+define can_manage_user: [user]
+define can_view_user: [user]
+define can_edit_user: [user]
+define can_delete_user: [user]
+
+# Group management
+define can_manage_group: [user]
+define can_view_group: [user]
+define can_edit_group: [user]
+define can_delete_group: [user]
+
+# Role management
+define can_manage_role: [user]
+define can_view_role: [user]
+define can_edit_role: [user]
+define can_delete_role: [user]
+
+# Organization management
+define can_manage_org: [user]
+define can_view_org: [user]
+define can_edit_org: [user]
+define can_delete_org: [user] 

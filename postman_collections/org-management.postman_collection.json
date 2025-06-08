@@ -1,0 +1,76 @@
+{
+  "info": {
+    "name": "Organization Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Organization",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/orgs",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "orgs"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Test Organization\",\n    \"description\": \"A test organization\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Organization",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/orgs/{{orgId}}",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "orgs", "{{orgId}}"]
+        }
+      }
+    },
+    {
+      "name": "Update Organization",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/orgs/{{orgId}}",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "orgs", "{{orgId}}"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Updated Organization\",\n    \"description\": \"An updated test organization\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete Organization",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/orgs/{{orgId}}",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "orgs", "{{orgId}}"]
+        }
+      }
+    }
+  ]
+} 

@@ -1,0 +1,62 @@
+{
+  "info": {
+    "name": "Get Auth0 Token",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Auth0 Token",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "pm.sendRequest({",
+              "    url: 'https://' + pm.environment.get('auth0_domain') + '/oauth/token',",
+              "    method: 'POST',",
+              "    header: {",
+              "        'content-type': 'application/json'",
+              "    },",
+              "    body: {",
+              "        mode: 'raw',",
+              "        raw: JSON.stringify({",
+              "            client_id: pm.environment.get('auth0_client_id'),",
+              "            client_secret: pm.environment.get('auth0_client_secret'),",
+              "            audience: pm.environment.get('auth0_audience'),",
+              "            grant_type: 'client_credentials'",
+              "        })",
+              "    }",
+              "}, function (err, res) {",
+              "    if (err) {",
+              "        console.error(err);",
+              "    } else {",
+              "        var jsonData = res.json();",
+              "        pm.environment.set('access_token', jsonData.access_token);",
+              "    }",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://{{auth0_domain}}/oauth/token",
+          "host": ["{{auth0_domain}}"],
+          "path": ["oauth", "token"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"{{auth0_client_id}}\",\n    \"client_secret\": \"{{auth0_client_secret}}\",\n    \"audience\": \"{{auth0_audience}}\",\n    \"grant_type\": \"client_credentials\"\n}"
+        }
+      }
+    }
+  ]
+} 

@@ -1,0 +1,96 @@
+{
+  "info": {
+    "name": "Role Member Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add User to Role",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/rolemembers",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "rolemembers"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"op\": 1,\n    \"type\": \"USER\",\n    \"roleId\": \"{{roleId}}\",\n    \"entityId\": \"{{userId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Add Group to Role",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/rolemembers",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "rolemembers"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"op\": 1,\n    \"type\": \"GROUP\",\n    \"roleId\": \"{{roleId}}\",\n    \"entityId\": \"{{groupId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Remove User from Role",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/rolemembers",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "rolemembers"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"op\": 2,\n    \"type\": \"USER\",\n    \"roleId\": \"{{roleId}}\",\n    \"entityId\": \"{{userId}}\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Remove Group from Role",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/v1/rolemembers",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "rolemembers"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"op\": 2,\n    \"type\": \"GROUP\",\n    \"roleId\": \"{{roleId}}\",\n    \"entityId\": \"{{groupId}}\"\n}"
+        }
+      }
+    }
+  ]
+} 

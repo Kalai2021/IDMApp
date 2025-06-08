@@ -1,0 +1,50 @@
+debug: true
+spring:
+  application:
+    name: idmapp
+  datasource:
+    url: jdbc:postgresql://localhost:5432/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  main:
+    banner-mode: "console"
+  output:
+    ansi:
+      enabled: always
+  logging:
+    level:
+      root: INFO
+      org.springframework.security: DEBUG
+      org.springframework.web: DEBUG
+      com.example.idmapp: DEBUG
+      com.example.idmapp.config: TRACE
+      com.auth0: DEBUG
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+        base-path: /actuator
+    endpoint:
+      health:
+        show-details: always
+      mappings:
+        enabled: true
+    health:
+      db:
+        enabled: true
+  sql:
+    init:
+      mode: never
+
+auth0:
+  domain: ${AUTH0_DOMAIN}
+  audience: ${AUTH0_AUDIENCE}
+  client-id: ${AUTH0_CLIENT_ID}
+  client-secret: ${AUTH0_CLIENT_SECRET}
+
+openfga:
+  api-url: ${OPENFGA_API_URL}
+  store-id: ${OPENFGA_STORE_ID}
+  api-token: ${OPENFGA_API_TOKEN} 
