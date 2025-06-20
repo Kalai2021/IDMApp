@@ -2,14 +2,14 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/sairam
     username: sairam
-    password: sairam123
+    password: ${DB_PASSWORD:test}
     driver-class-name: org.postgresql.Driver
 
 auth0:
   domain: test-tenant.auth0.com
   audience: https://test-api.your-domain.com
-  client-id: test-client-id
-  client-secret: test-client-secret
+  client-id: ${AUTH0_CLIENT_ID:test-client-id}
+  client-secret: ${AUTH0_CLIENT_SECRET:test-client-secret}
 
 logging:
   level:

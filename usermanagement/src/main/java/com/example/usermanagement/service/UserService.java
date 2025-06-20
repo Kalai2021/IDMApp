@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +21,7 @@ import java.util.UUID;
 
 @Service
 public class UserService {
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RestTemplate restTemplate;
@@ -50,6 +53,8 @@ public class UserService {
     }
 
     public User createUser(UserCreateRequest request) {
+        logger.info("Creating user with request: name={}, email={}, firstName={}, lastName={}", 
+            request.getName(), request.getEmail(), request.getFirstName(), request.getLastName());
         User user = new User();
         user.setName(request.getName());
         user.setFirstName(request.getFirstName());
@@ -57,24 +62,26 @@ public class UserService {
         user.setId(UUID.randomUUID());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        logger.info("Created user object: name={}, email={}, firstName={}, lastName={}", 
+            user.getName(), user.getEmail(), user.getFirstName(), user.getLastName());
         return userRepository.save(user);
     }
 
     public Optional<User> updateUser(UUID id, UserUpdateRequest request) {
+        logger.info("UserUpdateRequest payload: username={}, email={}, password={}", request.getUsername(), request.getEmail());
         Optional<User> existingUserOpt = userRepository.findById(id);
         if (existingUserOpt.isEmpty()) {
             return Optional.empty();
         }
         
-        existingUserOpt.ifPresent(user -> {
-            user.setName(request.getUsername());
-            user.setEmail(request.getEmail());
-            if (request.getPassword() != null) {
-                user.setPassword(passwordEncoder.encode(request.getPassword()));
-            }
-            userRepository.save(user);
-        });
-        return existingUserOpt;
+        User user = existingUserOpt.get();
+        int rows = userRepository.update(user);
+        if ( rows == 0 ) {
+            return Optional.empty();
+        } 
+
+        return Optional.of(user);
+        
     }
 
     public void deleteUser(UUID id) {

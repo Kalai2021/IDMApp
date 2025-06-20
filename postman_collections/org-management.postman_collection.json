@@ -22,7 +22,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"name\": \"Test Organization\",\n    \"description\": \"A test organization\"\n}"
+          "raw": "{\n    \"name\": \"Test Organization\",\n    \"displayName\": \"Test Org Display\",\n    \"description\": \"A test organization\"\n}"
         }
       }
     },
@@ -56,7 +56,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"name\": \"Updated Organization\",\n    \"description\": \"An updated test organization\"\n}"
+          "raw": "{\n    \"name\": \"Updated Organization\",\n    \"displayName\": \"Updated Org Display\",\n    \"description\": \"An updated test organization\"\n}"
         }
       }
     },

@@ -22,7 +22,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"name\": \"Test Group\",\n    \"description\": \"A test group\"\n}"
+          "raw": "{\n    \"name\": \"Test Group\",\n    \"displayName\": \"Test Group Display\",\n    \"description\": \"A test group\"\n}"
         }
       }
     },
@@ -56,7 +56,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"name\": \"Updated Group\",\n    \"description\": \"An updated test group\"\n}"
+          "raw": "{\n    \"name\": \"Updated Group\",\n    \"displayName\": \"Updated Group Display\",\n    \"description\": \"An updated test group\"\n}"
         }
       }
     },

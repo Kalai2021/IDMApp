@@ -23,7 +23,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final com.auth0.jwt.interfaces.JWTVerifier jwtVerifier;
 
-    public JwtAuthenticationFilter(@Qualifier("jwtVerifier") com.auth0.jwt.interfaces.JWTVerifier jwtVerifier) {
+    public JwtAuthenticationFilter(@Qualifier("idmappJwtVerifier") com.auth0.jwt.interfaces.JWTVerifier jwtVerifier) {
         this.jwtVerifier = jwtVerifier;
         logger.debug("JwtAuthenticationFilter initialized with verifier: {}", jwtVerifier);
     }

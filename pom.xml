@@ -137,12 +137,6 @@
             <groupId>com.auth0</groupId>
             <artifactId>jwks-rsa</artifactId>
         </dependency>
-        <!-- OpenFGA Java Client -->
-        <dependency>
-            <groupId>dev.openfga</groupId>
-            <artifactId>sdk</artifactId>
-            <version>0.3.0</version>
-        </dependency>
     </dependencies>
 
     <build>

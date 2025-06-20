@@ -22,7 +22,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"username\": \"testuser\",\n    \"email\": \"test@example.com\",\n    \"firstName\": \"Test\",\n    \"lastName\": \"User\"\n}"
+          "raw": "{\n    \"name\": \"testuser\",\n    \"email\": \"test@example.com\",\n    \"firstName\": \"Test\",\n    \"lastName\": \"User\",\n    \"password\": \"password123\"\n}"
         }
       }
     },
@@ -56,7 +56,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"email\": \"updated@example.com\",\n    \"firstName\": \"Updated\",\n    \"lastName\": \"User\"\n}"
+          "raw": "{\n    \"name\": \"updateduser\",\n    \"email\": \"updated@example.com\",\n    \"firstName\": \"Updated\",\n    \"lastName\": \"User\",\n    \"password\": \"password123\"\n}"
         }
       }
     },

@@ -14,7 +14,7 @@ spring:
     show-sql: true
 
 jwt:
-  secret: your-256-bit-secret-key-here-make-it-long-and-secure
+  secret: ${JWT_SECRET:your-256-bit-secret-key-here-make-it-long-and-secure}
   expiration: 86400000  # 24 hours in milliseconds
 
 logging:
@@ -26,6 +26,6 @@ server:
 
 auth0:
   domain: dev-df4lud4n6zz4i5tg.us.auth0.com
-  client-id: nkMspWucfXetzOpiBXi5sunnmRQNP5QZ
-  client-secret: CxsP1j4OL_V3FtK0YyJbEa2qYRF2gSV07WPQzUtPVE-VMYEcmGNKQnFTA5eWs3cx
+  client-id: ${AUTH0_CLIENT_ID}
+  client-secret: ${AUTH0_CLIENT_SECRET}
   audience: /api/v1/

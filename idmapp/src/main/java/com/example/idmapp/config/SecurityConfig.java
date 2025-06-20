@@ -28,7 +28,7 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.Arrays;
 import java.util.List;
 
-@Configuration
+@Configuration("idmappSecurityConfig")
 @EnableWebSecurity
 public class SecurityConfig {
     private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
@@ -45,7 +45,7 @@ public class SecurityConfig {
     @Value("${auth0.client-secret}")
     private String clientSecret;
 
-    @Bean(name = "securityFilterChain")
+    @Bean(name = "idmappSecurityFilterChain")
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         logger.debug("=== Security Configuration ===");
         logger.debug("Auth0 Domain: {}", domain);
@@ -59,8 +59,7 @@ public class SecurityConfig {
         
         http
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/api/v1/test/public").permitAll()
-                .requestMatchers("/api/v1/test/protected").authenticated()
+                .requestMatchers("/api/v1/auth/login").permitAll()
                 .requestMatchers("/api/v1/**").authenticated()
                 .anyRequest().permitAll()
             )
@@ -76,7 +75,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean(name = "jwtVerifier")
+    @Bean(name = "idmappJwtVerifier")
     public com.auth0.jwt.interfaces.JWTVerifier jwtVerifier() throws Exception {
         String jwksUrl = "https://" + domain + "/.well-known/jwks.json";
         logger.debug("Creating JWT verifier with JWKS URL: {}", jwksUrl);
@@ -143,7 +142,7 @@ public class SecurityConfig {
         };
     }
 
-    @Bean
+    @Bean(name = "idmappCorsConfigurationSource")
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("*"));

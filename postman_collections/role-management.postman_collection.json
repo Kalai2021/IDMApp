@@ -22,7 +22,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"name\": \"Test Role\",\n    \"description\": \"A test role\"\n}"
+          "raw": "{\n    \"name\": \"Test Role\",\n    \"displayName\": \"Test Role Display\",\n    \"description\": \"A test role\"\n}"
         }
       }
     },
@@ -56,7 +56,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"name\": \"Updated Role\",\n    \"description\": \"An updated test role\"\n}"
+          "raw": "{\n    \"name\": \"Updated Role\",\n    \"displayName\": \"Updated Role Display\",\n    \"description\": \"An updated test role\"\n}"
         }
       }
     },
