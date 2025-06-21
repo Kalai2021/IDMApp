@@ -15,7 +15,6 @@ public class OrgResponse {
     private String id;
     private String name;
     private String description;
-    private LocalDateTime createdAt;
-
+ 
     // Getters and setters
 }

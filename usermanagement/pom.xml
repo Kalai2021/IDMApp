@@ -49,6 +49,11 @@
         <artifactId>java-jwt</artifactId>
         <version>4.4.0</version>
       </dependency>
+      <dependency>
+        <groupId>com.example</groupId>
+        <artifactId>shared-security</artifactId>
+        <version>${project.version}</version>
+      </dependency>
     </dependencies>
 
     <build>

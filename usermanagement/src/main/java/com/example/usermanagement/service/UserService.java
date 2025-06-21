@@ -68,7 +68,7 @@ public class UserService {
     }
 
     public Optional<User> updateUser(UUID id, UserUpdateRequest request) {
-        logger.info("UserUpdateRequest payload: username={}, email={}, password={}", request.getUsername(), request.getEmail());
+        logger.info("UserUpdateRequest payload: name={}, email={}", request.getName(), request.getEmail());
         Optional<User> existingUserOpt = userRepository.findById(id);
         if (existingUserOpt.isEmpty()) {
             return Optional.empty();

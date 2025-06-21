@@ -16,6 +16,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>shared-security</module>
         <module>idmapp</module>
         <module>usermanagement</module>
         <module>groupmanagement</module>
@@ -35,6 +36,10 @@
         <auth0.version>1.44.0</auth0.version>
         <auth0.jwt.version>4.4.0</auth0.jwt.version>
         <auth0.jwks.version>0.22.1</auth0.jwks.version>
+        <openfga.version>0.8.1</openfga.version>
+        <jackson.version>2.17.1</jackson.version>
+        
+
     </properties>
 
     <repositories>
@@ -53,6 +58,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>dev.openfga</groupId>
+                <artifactId>openfga-sdk</artifactId>
+                <version>0.8.1</version>
+              </dependency>
             <!-- Internal module dependencies -->
             <dependency>
                 <groupId>com.example</groupId>
@@ -104,6 +114,7 @@
                 <artifactId>jwks-rsa</artifactId>
                 <version>${auth0.jwks.version}</version>
             </dependency>
+ 
         </dependencies>
     </dependencyManagement>
 
@@ -136,6 +147,11 @@
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>jwks-rsa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>dev.openfga</groupId>
+            <artifactId>openfga-sdk</artifactId>
+            <version>${openfga.version}</version>
         </dependency>
     </dependencies>
 

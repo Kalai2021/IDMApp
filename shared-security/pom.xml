@@ -10,9 +10,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>rolemembermanagement</artifactId>
-    <name>rolemembermanagement</name>
-    <description>Role Member Management Module</description>
+    <artifactId>shared-security</artifactId>
+    <name>shared-security</name>
+    <description>Shared Security Module</description>
 
     <dependencies>
         <dependency>
@@ -34,9 +34,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>shared-security</artifactId>
-            <version>${project.version}</version>
+            <groupId>dev.openfga</groupId>
+            <artifactId>openfga-sdk</artifactId>
+            <version>0.8.1</version>
         </dependency>
     </dependencies>
 </project> 

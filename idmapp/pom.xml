@@ -69,6 +69,11 @@
 			<groupId>com.example</groupId>
 			<artifactId>orgmembermanagement</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>shared-security</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 		<!-- Test Dependencies -->
 		<dependency>
